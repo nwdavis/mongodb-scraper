@@ -47,7 +47,29 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
+
 //ROUTES
+app.get("/", function(req, res){
+  Article.find({}, function(error, found){
+    if (error) {
+      console.log(error)
+    } else {
+      var hbsObj = {articles: found}
+      res.render("index", hbsObj);
+    }
+  });
+});
+
+app.get("/saved", function(req, res){
+  Article.find({saved: true}, function(error, found){
+    if (error){
+      console.log(error);
+    } else {
+      var hbsObj = {articles: found}
+      res.render("saved", hbsObj);
+    }
+  });
+})
 
 app.get("/scrape", function(req, res) {
   
