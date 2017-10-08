@@ -1,0 +1,27 @@
+{
+  "name": "mongodb-scraper",
+  "version": "1.0.0",
+  "description": "mongo scraper for slate.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nwdavis/mongodb-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nwdavis/mongodb-scraper/issues"
+  },
+  "homepage": "https://github.com/nwdavis/mongodb-scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.1",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.12.0",
+    "request": "^2.83.0"
+  }
+}
