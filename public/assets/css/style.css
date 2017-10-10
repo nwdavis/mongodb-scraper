@@ -1,0 +1,12 @@
+body {
+  background-image: url("/assets/img/background.png")
+}
+
+.jumbotron {
+  background-image: url("/assets/img/background.png")
+}
+
+.navbar {
+  background-color: grey;
+}
+
