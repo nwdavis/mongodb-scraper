@@ -1,12 +1,22 @@
-body {
-  background-image: url("/assets/img/background.png")
-}
-
-.jumbotron {
-  background-image: url("/assets/img/background.png")
-}
-
 .navbar {
   background-color: grey;
 }
+.jumbotron {
+  background-color: white;
+  padding-top: 100px;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
+body {
+  font-family: 'Mukta', sans-serif;
+}
+
+.header-h1 {
+  font-size: 50px;
+}
+
+.header-h2 {
+  font-size: 22px;
+  margin-bottom: 50px;
+}

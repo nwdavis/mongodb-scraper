@@ -74,6 +74,8 @@ app.get("/saved", function(req, res){
 app.get("/scrape", function(req, res) {
   
   request("http://www.slate.com/full_slate.html", function(error, response, html) {
+
+    console.log("Making scrape request");
     
     var $ = cheerio.load(html);
     
@@ -81,6 +83,8 @@ app.get("/scrape", function(req, res) {
 
       // Save an empty result object
       var result = {};
+
+      result.saved = false;
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("div.full-tile").children("span.hed").text();
@@ -109,8 +113,12 @@ app.get("/scrape", function(req, res) {
     });
   });
   
-  res.send("Scrape Complete");
+  res.redirect("/");
 });
+
+app.post("/save/:id", function(req, res){
+  Article.findOneAndUpdate({ "_id": req.params.id })
+})
 
 
 
