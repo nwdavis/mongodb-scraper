@@ -4,10 +4,12 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var methodOverride = require('method-override');
 
 //models
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
+
 
 //scraping helpers
 var request = require("request");
@@ -26,6 +28,10 @@ app.use(bodyParser.urlencoded({
 
 // Make public a static dir
 app.use(express.static("public"));
+
+
+//method override
+app.use(methodOverride("_method"));
 
 //handlebars
 var exphbs = require("express-handlebars");
@@ -117,7 +123,17 @@ app.get("/scrape", function(req, res) {
 });
 
 app.post("/save/:id", function(req, res){
-  Article.findOneAndUpdate({ "_id": req.params.id })
+
+  Article.findOneAndUpdate({"_id": req.params.id}, {"saved": true}, function(error, doc) {
+    // Log any errors
+    if (error) {
+      console.log(error);
+    }
+    // Or send the doc to the browser as a json object
+    else {
+      res.redirect("/");
+    }
+  });
 })
 
 
