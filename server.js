@@ -96,7 +96,6 @@ app.get("/scrape", function(req, res) {
       result.title = $(this).children("div.full-tile").children("span.hed").text();
       result.link = $(this).children("a").attr("href");
 
-      console.log(result);
 
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
@@ -124,16 +123,34 @@ app.get("/scrape", function(req, res) {
 
 app.post("/save/:id", function(req, res){
 
-  Article.findOneAndUpdate({"_id": req.params.id}, {"saved": true}, function(error, doc) {
-    // Log any errors
-    if (error) {
-      console.log(error);
-    }
-    // Or send the doc to the browser as a json object
-    else {
-      res.redirect("/");
-    }
-  });
+
+  if (req.body.saved === "true"){
+    console.log(`marking article ${req.params.id} as saved`);
+    Article.findOneAndUpdate({"_id": req.params.id}, {"saved": true}, function(error, doc) {
+      // Log any errors
+      if (error) {
+        console.log(error);
+      }
+      // Or send the doc to the browser as a json object
+      else {
+        res.redirect("/saved");
+      }
+    });
+  
+  } else if (req.body.saved === "false") {
+    console.log(`marking article ${req.params.id} as unsaved`);
+    Article.findOneAndUpdate({"_id": req.params.id}, {"saved": false}, function(error, doc) {
+      // Log any errors
+      if (error) {
+        console.log(error);
+      }
+      // Or send the doc to the browser as a json object
+      else {
+        res.redirect("/saved");
+      }
+    });
+  }
+  
 })
 
 

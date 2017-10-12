@@ -16,14 +16,28 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="post-preview">
-        <a href="post.html">
-          <h2 class="post-title">
-            This is where the post title will go
-          </h2>
-          <h3 class="post-subtitle">
-            this is where the post link will go
-          </h3>
+      <div id="article-dump">
+        {{#each articles}}
+          {{#if this.saved}}
+            <div class="panel panel-default">
+              <div class="row">
+                <div class="col-md-10">
+                
+                  <a href={{this.link}} id={{this._id}} class="post-title">{{this.title}}</a>
+                </div>
+                <div class="col-md-1">
+                  <form action="/save/{{this.id}}" method="POST">
+                    <input type="hidden" name="saved" value="false">
+                    <button class="btn btn-primary save-button" type="submit">Unsave</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <br>
+          {{/if}}
+        {{/each}}
         </a>
       </div>
       <hr>
