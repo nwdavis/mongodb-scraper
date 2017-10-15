@@ -38,7 +38,12 @@ $("#scrape-button").on("click", function(){
     method: "GET",
     url: "/scrape",
   }).done(function(data){
-    return redirect("/")
+    $.ajax({
+      method: "GET",
+      url: "/"
+    }).done(function(data){
+      console.log(data);
+    })
   })
 
 })
