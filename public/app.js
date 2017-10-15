@@ -2,9 +2,13 @@
 
 $("#note-submit").on("click", function() {
 
+    event.preventDefault();
+
+    console.log("clicked");
   
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("article-id");
+  
 
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
@@ -23,6 +27,9 @@ $("#note-submit").on("click", function() {
   
   $("#note-body").val("");
 });
+
+
+
 
 $("#scrape-button").on("click", function(){
   console.log("Scrape button clicked.");
