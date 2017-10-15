@@ -6,7 +6,7 @@
         <div>
           <h1 class="header-h1">Slate Scraper</h1>
           <h2 class="header-h2">Scrape, save, and comment on articles from Slate.com</h2>
-          <form action="/scrape" method="GET"><button class="btn btn-primary" type="submit">CLICK TO SCRAPE NEW ARTICLES</button></form>
+          <button id="scrape-button" class="btn btn-primary" type="submit">CLICK TO SCRAPE NEW ARTICLES</button>
         </div>
       </div>
     </div>
@@ -22,9 +22,7 @@
 
           <div class="panel panel-default">
             <div class="row">
-              <div class="col-md-10">
-                {{!-- <a href={{this.link}}> --}}
-              
+              <div class="col-md-10">             
                 <a href={{this.link}} id={{this._id}} class="post-title">{{this.title}}</a>
               </div>
               <div class="col-md-1">

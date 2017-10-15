@@ -56,7 +56,7 @@ db.once("open", function() {
 
 //ROUTES
 app.get("/", function(req, res){
-  Article.find({}, function(error, found){
+  Article.find({}).sort({ date: 1}).exec(function(error, found){
     if (error) {
       console.log(error)
     } else {
@@ -79,6 +79,9 @@ app.get("/saved", function(req, res){
 
 app.get("/articles/:id", function(req, res) {
   
+  console.log(req.params.id);
+
+  
   Article.findOne({ "_id": req.params.id })
   
   .populate("note")
@@ -90,8 +93,8 @@ app.get("/articles/:id", function(req, res) {
     }
     
     else {
-      var hbsObj = {notes: found};
-      res.render("notes", hbsObj);
+      console.log(doc);
+      res.render("notes", doc);
     }
   });
 });
@@ -144,7 +147,7 @@ app.post("/save/:id", function(req, res){
 
 
   if (req.body.saved === "true"){
-    console.log(`marking article ${req.params.id} as saved`);
+    
     Article.findOneAndUpdate({"_id": req.params.id}, {"saved": true}, function(error, doc) {
       // Log any errors
       if (error) {
@@ -157,7 +160,7 @@ app.post("/save/:id", function(req, res){
     });
   
   } else if (req.body.saved === "false") {
-    console.log(`marking article ${req.params.id} as unsaved`);
+    
     Article.findOneAndUpdate({"_id": req.params.id}, {"saved": false}, function(error, doc) {
       // Log any errors
       if (error) {
@@ -171,6 +174,8 @@ app.post("/save/:id", function(req, res){
   }
   
 })
+
+
 
 
 

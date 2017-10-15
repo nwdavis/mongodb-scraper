@@ -20,3 +20,7 @@ body {
   font-size: 22px;
   margin-bottom: 50px;
 }
+
+textarea {
+  resize: none;
+}
