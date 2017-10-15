@@ -21,15 +21,22 @@
           {{#if this.saved}}
             <div class="panel panel-default">
               <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-9">
                 
                   <a href={{this.link}} id={{this._id}} class="post-title">{{this.title}}</a>
                 </div>
-                <div class="col-md-1">
-                  <form action="/save/{{this.id}}" method="POST">
-                    <input type="hidden" name="saved" value="false">
-                    <button class="btn btn-primary save-button" type="submit">Unsave</button>
-                  </form>
+                <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <form action="/save/{{this.id}}" method="POST">
+                        <input type="hidden" name="saved" value="false">
+                        <button class="btn btn-primary save-button" type="submit">Unsave</button>
+                      </form>
+                    </div>
+                    <div class="col-md-5 offset-md-2">
+                      <button class="btn btn-success note" id={{this.id}}>Notes</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

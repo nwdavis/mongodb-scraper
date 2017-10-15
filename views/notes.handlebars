@@ -1,0 +1,46 @@
+<header class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <div>
+            <h1>Add a note!</h1>
+            <input type="text" class="form-control" placeholder="Add a note about this article.">
+            <button class="btn btn-default" type="submit" id="note-submit">Add Note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div id="article-dump">
+        {{#each note}}
+          <div class="row">
+
+            <h1>{{this.title}}</h1>
+
+            <div id=class="col-md-10 panel panel-default">
+              <p>{{this.body}}</p>
+            </div>
+
+            <div class="col-md-2">
+              <form>
+                <button class="btn btn-danger remove-note-button" type="submit">Remove</button>
+              </form>
+            </div>
+                
+          </div>
+
+          <br>
+          <br>
+
+        {{/each}}
+      
+      </div>
+    </div>
+  </div>
+</div>

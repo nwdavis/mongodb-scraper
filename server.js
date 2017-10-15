@@ -77,6 +77,25 @@ app.get("/saved", function(req, res){
   });
 })
 
+app.get("/articles/:id", function(req, res) {
+  
+  Article.findOne({ "_id": req.params.id })
+  
+  .populate("note")
+  
+  .exec(function(error, doc) {
+    
+    if (error) {
+      console.log(error);
+    }
+    
+    else {
+      var hbsObj = {notes: found};
+      res.render("notes", hbsObj);
+    }
+  });
+});
+
 app.get("/scrape", function(req, res) {
   
   request("http://www.slate.com/full_slate.html", function(error, response, html) {
