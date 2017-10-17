@@ -58,7 +58,7 @@ db.once("open", function() {
 
 //ROUTES
 app.get("/", function(req, res){
-  Article.find({}).sort({ date: 1}).exec(function(error, found){
+  Article.find({}, function(error, found){
     if (error) {
       console.log(error)
     } else {
