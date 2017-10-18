@@ -4,7 +4,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var methodOverride = require('method-override');
 
 //models
 var Note = require("./models/Note.js");
@@ -32,8 +31,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 
-//method override
-app.use(methodOverride("_method"));
+
 
 //handlebars
 var exphbs = require("express-handlebars");
@@ -44,6 +42,8 @@ app.set("view engine", "handlebars");
 // Database configuration with mongoose
 mongoose.connect("mongodb://heroku_c538m350:tn8jl8ccop04mhdd14e9j1himj@ds113825.mlab.com:13825/heroku_c538m350");
 var db = mongoose.connection;
+
+// "mongodb://heroku_c538m350:tn8jl8ccop04mhdd14e9j1himj@ds113825.mlab.com:13825/heroku_c538m350"
 
 // Show any mongoose errors
 db.on("error", function(error) {
